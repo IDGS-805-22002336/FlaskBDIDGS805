@@ -1,0 +1,42 @@
+{% extends "layout.html" %} 
+{% block container %} 
+{% import "_macros.html" as macros %}
+
+<div class="py-32 relative overflow-x-auto sm:rounded-lg">
+    <form method="POST" novalidate class="max-w-md mx-auto">
+        
+        {{ form.csrf_token }} 
+        {{ form.id(type="hidden") }}
+        
+        <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.nombre, 
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.apellido, 
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.email, 
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+         <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.telefono, 
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+        <div class="flex gap-4">
+            <input type="submit" value="Eliminar"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
+
+            <a href="{{ url_for('index') }}"
+                style="background:red; padding:10px; color:white;">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
