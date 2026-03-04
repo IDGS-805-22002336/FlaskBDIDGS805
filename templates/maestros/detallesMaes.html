@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block container %}
+<div class="min-h-screen flex items-center justify-center bg-stone-100">
+
+    <div class="relative bg-white w-full max-w-md p-8 rounded-2xl shadow-xl border border-stone-200">
+        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="absolute top-2 end-2 text-body hover:text-heading bg-neutral-primary-soft box-border border border-transparent hover:bg-neutral-tertiary focus:ring-4 focus:ring-neutral-tertiary rounded-base p-1.5 focus:outline-none" type="button">
+            <span class="sr-only">Open dropdown</span>
+            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M6 12h.01m6 0h.01m5.99 0h.01"/></svg>
+        </button>
+    <div class="flex flex-col items-center">
+        <img class="w-24 h-24 mb-6 rounded-full" 
+        src="{{url_for('static',filename='img/IDGS805.png')}}" 
+        alt="Bonnie image"/>
+        <h5 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
+            Nombre: {{maes.nombre}} {{maes.apellido}}
+        </h5>
+        <h3 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
+            Especialidad: {{maes.especialidad}}
+        </h3>
+        <h3 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
+            Correo: {{maes.email}}
+        </h3>
+
+        <div class="flex mt-4 md:mt-6 gap-4">
+            <a href="/maestros" class="flex items-center space-x-2 hover:opacity-90 transition"
+                class="font-bold uppercase text-sm tracking-widest">Regresar
+            </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

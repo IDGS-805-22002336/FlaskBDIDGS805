@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maestros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#f5f3ef] pb-24 text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-[#fdfcf9] border-b border-gray-300 sticky top-0 shadow-sm">
+    <div class="max-w-screen-xl flex justify-between items-center mx-auto p-4">
+
+        <a href="/" class="flex items-center space-x-3">
+            <img src="{{ url_for('static', filename='img/IDGS805.png') }}"
+                 class="h-10 w-10 rounded-lg shadow object-contain">
+
+            <span class="text-lg font-semibold text-gray-700">
+                IDGS-805 Flask
+            </span>
+        </a>
+
+        <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+            <a href="/" class="hover:text-gray-900 transition">Home</a>
+            <a href="#" class="hover:text-gray-900 transition">About</a>
+            <a href="#" class="hover:text-gray-900 transition">Services</a>
+            <a href="#" class="hover:text-gray-900 transition">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- CONTENIDO -->
+<div class="max-w-7xl mx-auto mt-10 px-6">
+
+    <!-- BOTON NUEVO -->
+    <div class="bg-[#7c6a55] text-white p-4 rounded-t-xl shadow-md flex items-center">
+        <a href="{{ url_for('maestros.agregarMaes') }}"
+           class="flex items-center space-x-2 hover:opacity-90 transition">
+
+            <span class="font-semibold uppercase tracking-widest text-sm">
+                ＋ Nuevo
+            </span>
+        </a>
+    </div>
+
+    <!-- TABLA -->
+    <div class="bg-white rounded-b-xl shadow-lg border border-gray-300 overflow-hidden">
+
+        <table class="w-full text-sm text-left">
+
+            <thead class="bg-[#e6e0d8] text-gray-700 uppercase text-xs">
+            <tr>
+                <th class="px-6 py-4">Nombre</th>
+                <th class="px-6 py-4">Apellido</th>
+                <th class="px-6 py-4">Especialidad</th>
+                <th class="px-6 py-4">Correo</th>
+                <th class="px-6 py-4 text-center">Editar</th>
+                <th class="px-6 py-4 text-center">Detalles</th>
+                <th class="px-6 py-4 text-center">Eliminar</th>
+            </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+
+            {% for maes in maestros %}
+            <tr class="hover:bg-gray-100 transition">
+
+                <td class="px-6 py-5">{{ maes.nombre }}</td>
+                <td class="px-6 py-5">{{ maes.apellido }}</td>
+                <td class="px-6 py-5">{{ maes.especialidad }}</td>
+                <td class="px-6 py-5">{{ maes.email }}</td>
+
+                <td class="px-6 py-5 text-center">
+                    <a href="{{ url_for('maestros.modificarMaes', matricula=maes.matricula) }}"
+                       class="bg-amber-200 hover:bg-amber-300 text-gray-900 px-4 py-2 rounded-lg text-xs font-semibold w-28 inline-block transition">
+                        Editar
+                    </a>
+                </td>
+
+                <td class="px-6 py-5 text-center">
+                    <a href="{{ url_for('maestros.detallesMaes', matricula=maes.matricula) }}"
+                       class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg text-xs font-semibold w-28 inline-block transition">
+                        Detalles
+                    </a>
+                </td>
+
+                <td class="px-6 py-5 text-center">
+                    <a href="{{ url_for('maestros.eliminarMaes', matricula=maes.matricula) }}"
+                       class="bg-red-200 hover:bg-red-300 text-red-900 px-4 py-2 rounded-lg text-xs font-semibold w-28 inline-block transition">
+                        Eliminar
+                    </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
