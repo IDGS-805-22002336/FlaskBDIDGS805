@@ -2,56 +2,57 @@
 <html lang="es">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flask IDGS</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask IDGS | Full Color</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 
-<body class="bg-[#f4f1eb] text-gray-800">
+<body class="bg-gradient-to-br from-[#cbd5e1] via-[#94a3b8] to-[#64748b] min-h-screen font-sans antialiased text-slate-900">
 
-<!-- NAVBAR -->
-<nav class="bg-[#faf8f5] border-b border-gray-300 shadow-sm sticky top-0 z-50">
-<div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <nav class="bg-white/30 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center gap-3">
+                <div class="bg-white/80 p-1.5 rounded-lg shadow-sm">
+                    <img src="{{url_for('static',filename='img/IDGS805.png')}}" class="h-7 w-auto" alt="Logo">
+                </div>
+                <span class="text-lg font-bold text-slate-800 tracking-tight italic">
+                    FLASK-IDGS805
+                </span>
+            </a>
+        </div>
+    </nav>
 
-<a href="#" class="flex items-center space-x-3">
-<img src="{{url_for('static',filename='img/IDGS805.png')}}"
-class="h-9 rounded-lg shadow-sm">
+    <main class="max-w-5xl mx-auto px-4 py-12 flex flex-col items-center">
+        
+        {% with messages=get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div id="alert-1" class="w-full max-w-md flex items-center p-4 mb-8 text-blue-900 bg-white/60 border border-white/40 backdrop-blur-sm rounded-2xl shadow-sm" role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <div class="ms-3 text-sm font-bold tracking-tight">
+                        {{ message }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-<span class="text-lg font-semibold text-gray-700">
-Flask IDGS
-</span>
-</a>
+        <div class="w-full max-w-md bg-white/70 backdrop-blur-sm rounded-[2.5rem] shadow-2xl border border-white/50 overflow-hidden">
+            
+            <div class="p-8 md:p-5">
+                {% block container %}
+                {% endblock %}
+            </div>
+        </div>
 
-<button class="bg-[#6b5b4a] hover:bg-[#5a4b3d] text-white px-5 py-2 rounded-lg text-sm shadow transition">
-Get started
-</button>
+    </main>
 
-</div>
-</nav>
-
-<!-- CONTENIDO -->
-<div class="flex items-center justify-center min-h-screen px-4 py-10">
-
-<div class="w-full max-w-4xl bg-white rounded-2xl shadow-lg border border-gray-300 p-8">
-
-<!-- FLASH MESSAGES -->
-{% with messages=get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<div class="mb-4 p-4 rounded-lg bg-gray-200 border border-gray-300 text-gray-800 text-sm">
-{{ message }}
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
-
-{% block container %}
-{% endblock %}
-
-</div>
-</div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
+
 </html>

@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, PasswordField
 from wtforms import validators
 from wtforms import EmailField
+from wtforms.validators import DataRequired
 
 
 class UserForm2(FlaskForm):
@@ -44,3 +45,17 @@ class UserForm(FlaskForm):
     
     
     
+class UserCurso(FlaskForm):
+    id=IntegerField('id')
+    nombre=StringField("nombre del curso", [
+        validators.DataRequired(message="el campo es reuqerido"),
+        validators.Length(min=3, max=70, message="Ingrese el valor valido")
+    ])
+    descripcion=StringField("descripcion", [
+        validators.DataRequired(message="el campo es reuqerido"),
+        validators.Length(min=3, max=70, message="Ingrese el valor valido")
+    ])
+    maestro_id = StringField("Maestro ID", [
+    validators.DataRequired(message="el campo es requerido"),
+    validators.Length(min=3, max=70,message="Ingrese un valor valido"),
+    ])

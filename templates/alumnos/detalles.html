@@ -11,17 +11,30 @@
         src="{{url_for('static',filename='img/IDGS805.png')}}" 
         alt="Bonnie image"/>
         <h5 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
-            nombre: {{nombre}} {{apellido}}
+            nombre: {{alumno.nombre}} {{alumno.apellido}}
         </h5>
         <h3 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
-            correo: {{email}}
+            correo: {{alumno.email}}
         </h3>
         <h3 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
-            telefono: {{telefono}}
+            telefono: {{alumno.telefono}}
         </h3>
 
+        <h3 class="mb-2 text-lg font-semibold text-heading">
+        Cursos inscritos:
+        </h3>
+        <ul class="text-gray-800 text-lg mt-4 space-y-2">
+        {% for curso in alumno.cursos %}
+            <li class="bg-gray-100 px-3 py-2 rounded mb-1">
+                {{ curso.nombre }}
+            </li>
+        {% else %}
+             <li>No esta incrito a un curso</li>
+        {% endfor %}
+        </ul>
+
         <div class="flex mt-4 md:mt-6 gap-4">
-            <a href="/index" class="flex items-center space-x-2 hover:opacity-90 transition"
+            <a href="{{ url_for('alumnos.lista') }}" class="flex items-center space-x-2 hover:opacity-90 transition"
                 class="font-bold uppercase text-sm tracking-widest">Regresar
             </a>
             </div>

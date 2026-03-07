@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Alumnos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-[#cbd5e1] via-[#94a3b8] to-[#64748b] min-h-screen pb-20 font-sans text-black">
+
+<nav class="bg-[#1e293b] p-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-3 text-white">
+            <img src="{{ url_for('static', filename='img/IDGS805.png') }}" class="h-8 bg-white rounded">
+            <span class="font-bold text-lg uppercase tracking-tight">IDGS 805 Flask</span>
+        </div>
+    </div>
+</nav>
+
+<div class="max-w-7xl mx-auto mt-10 px-4">
+
+<div class="flex justify-between items-center mb-6">
+
+<a href="{{ url_for('alumnos.lista_alumnos') }}"
+class="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-3 rounded font-bold text-sm uppercase tracking-wider transition shadow-lg">
+＋ Nuevo Alumno
+</a>
+
+</div>
+
+<div class="bg-white border border-gray-500 shadow-3xl overflow-hidden rounded-lg">
+
+<table class="w-full text-sm text-left">
+
+<thead class="bg-gray-200 border-b border-gray-400 text-black font-black uppercase text-[10px]">
+<tr>
+
+<th class="px-5 py-3">Nombre</th>
+<th class="px-5 py-3">Apellido</th>
+<th class="px-5 py-3">Correo</th>
+<th class="px-5 py-3">Telefono</th>
+<th class="px-5 py-3 text-center">Acciones</th>
+
+</tr>
+</thead>
+
+<tbody class="divide-y divide-gray-200">
+
+{% for alum in alumno %}
+<tr class="hover:bg-gray-50 transition">
+
+<td class="px-5 py-3 text-black">
+{{ alum.nombre }}
+</td>
+
+<td class="px-5 py-3 text-black">
+{{ alum.apellido }}
+</td>
+
+<td class="px-5 py-3 text-black">
+{{ alum.email }}
+</td>
+
+<td class="px-5 py-3 text-black">
+{{ alum.telefono }}
+</td>
+
+<td class="px-5 py-3 text-center">
+
+<div class="flex justify-center gap-1">
+
+<a href="{{ url_for('alumnos.modificarAlum', id=alum.id) }}"
+class="bg-blue-100 hover:bg-blue-100 text-black font-black uppercase text-[9px] px-3 py-1.5 rounded-lg border border-blue-300 transition-all active:scale-95 shadow-sm">
+Editar
+</a>
+
+<a href="{{ url_for('alumnos.detallesAlum', id=alum.id) }}"
+class="bg-gray-100 hover:bg-gray-100 text-black font-black uppercase text-[9px] px-3 py-1.5 rounded-lg border border-gray-300 transition-all active:scale-95 shadow-sm">
+Detalles
+</a>
+
+<a href="{{ url_for('alumnos.eliminarAlum', id=alum.id) }}"
+class="bg-red-100 hover:bg-red-100 text-black font-black uppercase text-[9px] px-3 py-1.5 rounded-lg border border-red-300 transition-all active:scale-95 shadow-sm">
+Eliminar
+</a>
+
+</div>
+
+</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="mt-8">
+<a href="/index" class="text-white font-bold text-sm uppercase hover:underline drop-shadow-md">
+← Regresar al menú
+</a>
+</div>
+
+</div>
+
+</body>
+</html>

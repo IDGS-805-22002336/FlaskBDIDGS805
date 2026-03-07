@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
+
+<div class="py-32 relative overflow-x-auto sm:rounded-lg">
+    <form action="{{ url_for('curso.lista_curso') }}" method="POST" novalidate class="max-w-md mx-auto">
+
+        {{ form.csrf_token }}
+
+        {% if mensaje %}
+        <div class="bg-red-200 text-red-800 p-3 rounded mb-4 text-center">
+            {{ mensaje }}
+        </div>
+        {% endif %}
+
+        <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.nombre,
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.descripcion,
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+            {{ macros.camposNuevos(form.maestro_id,
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer") }}
+        </div>
+
+        <div class="flex gap-4">
+            <input type="submit" value="Registrar"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
+
+            <a href="{{ url_for('curso.listaC') }}"
+                class="w-full text-center text-white bg-red-600 hover:bg-red-700 rounded-lg text-sm px-5 py-2.5">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

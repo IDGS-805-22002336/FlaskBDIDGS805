@@ -19,6 +19,20 @@
         <h3 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
             Correo: {{maes.email}}
         </h3>
+        <h3 class="mb-2 text-lg font-semibold text-heading">
+            Cursos que imparte:
+        </h3>
+        <ul class="mt-4 space-y-2">
+            {% for curso in maes.cursos %}
+                <li class="bg-gray-200 px-5 py-3 rounded-lg shadow font-semibold text-gray-800">
+                    {{ curso.nombre }}
+                </li>
+            {% else %}
+                <li class="text-gray-600">
+                    No imparte ningún curso
+                </li>
+            {% endfor %}
+        </ul>
 
         <div class="flex mt-4 md:mt-6 gap-4">
             <a href="/maestros" class="flex items-center space-x-2 hover:opacity-90 transition"
